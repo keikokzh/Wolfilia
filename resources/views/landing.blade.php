@@ -149,12 +149,14 @@
                     </div>
                 </div>
                 <div class="animate-slide-up stagger-2">
-                    <div style="background: var(--canvas-light); border-radius: var(--rounded-lg); padding: 32px; border: 1px solid var(--hairline-light); box-shadow: 0 8px 8px rgba(0,0,0,0.02), 0 4px 4px rgba(0,0,0,0.02);">
-                        <div style="width: 60%; height: 24px; background: var(--shade-30); border-radius: var(--rounded-xs); margin-bottom: 24px;"></div>
-                        <div style="width: 100%; height: 12px; background: var(--aloe-10); border-radius: var(--rounded-xs); margin-bottom: 12px;"></div>
-                        <div style="width: 90%; height: 12px; background: var(--aloe-10); border-radius: var(--rounded-xs); margin-bottom: 12px;"></div>
-                        <div style="width: 80%; height: 12px; background: var(--aloe-10); border-radius: var(--rounded-xs); margin-bottom: 32px;"></div>
-                        <div style="width: 40px; height: 40px; border-radius: var(--rounded-pill); background: var(--ink);"></div>
+                    <div class="lp-edu-media">
+                        <img
+                            class="lp-edu-media__img"
+                            src="{{ asset('images/landing/panduan-sop.png') }}"
+                            alt="Ilustrasi panduan budidaya dan SOP"
+                            loading="lazy"
+                            decoding="async"
+                        >
                     </div>
                 </div>
             </div>
@@ -383,6 +385,22 @@
 
 .lp-orbit__node--1 { top: 70px; right: 98px; }
 .lp-orbit__node--2 { bottom: 104px; right: 44px; }
+
+.lp-edu-media {
+    background: var(--canvas-light);
+    border-radius: var(--rounded-lg);
+    border: 1px solid var(--hairline-light);
+    box-shadow: 0 8px 8px rgba(0,0,0,0.02), 0 4px 4px rgba(0,0,0,0.02);
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+}
+
+.lp-edu-media__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 
 .footer-dark {
     background: transparent;
