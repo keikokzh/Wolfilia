@@ -3,38 +3,45 @@
 @section('title', 'Wolfilium — Digitalisasi Protein Hijau untuk Akuakultur Berkelanjutan')
 
 @section('body')
-<div class="canvas-night" style="min-height: 100vh;">
+<div class="landing-aurora" style="min-height: 100vh;">
     {{-- ── Hero Section (Cinematic Track) ── --}}
-    <section class="canvas-night" style="position: relative; overflow: hidden; padding-bottom: var(--spacing-huge);">
+    <section class="landing-aurora__hero" style="position: relative; overflow: hidden; padding-bottom: var(--spacing-huge);">
         
         {{-- Navbar --}}
-        <nav class="nav-bar-dark" style="background: transparent;">
-            <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: var(--rounded-lg); display: flex; align-items: center; justify-content: center; background: var(--primary);">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s.5 3.5-2 7c-1.5 2.1-3.5 3.5-5 4.5"/><path d="M11.7 10.4C12.6 7 16 5.2 17 3.5c1.3 2.5 2 5.8.5 9.5-1.5 3.5-4.5 5.5-7 6.5"/></svg>
-                </div>
-                <span class="heading-lg" style="font-weight: 800; color: white;">Wolfilium</span>
+        <nav class="lp-nav" style="background: transparent;">
+            <a href="{{ url('/') }}" class="lp-brand">
+                <span class="lp-brand__mark" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s.5 3.5-2 7c-1.5 2.1-3.5 3.5-5 4.5"/><path d="M11.7 10.4C12.6 7 16 5.2 17 3.5c1.3 2.5 2 5.8.5 9.5-1.5 3.5-4.5 5.5-7 6.5"/></svg>
+                </span>
+                <span class="lp-brand__name">Wolfilium</span>
+            </a>
+
+            <div class="lp-nav__links">
+                <a class="lp-nav__link" href="#kenapa">Your Team</a>
+                <a class="lp-nav__link" href="#kenapa">Solutions</a>
+                <a class="lp-nav__link" href="#panduan">Blog</a>
+                <a class="lp-nav__link" href="#kontak">Pricing</a>
             </div>
-            @auth
-                @if(auth()->user()->isAdmin())
-                    <a href="{{ route('admin.dashboard') }}" class="button-outline-on-dark">
-                        Masuk Dashboard Admin →
-                    </a>
+
+            <div class="lp-nav__actions">
+                @auth
+                    @if(auth()->user()->isAdmin())
+                        <a href="{{ route('admin.dashboard') }}" class="lp-btn lp-btn--ghost">Dashboard</a>
+                        <a href="{{ route('manajemen.index') }}" class="lp-btn lp-btn--join">Join Now</a>
+                    @else
+                        <a href="{{ route('customer.dashboard') }}" class="lp-btn lp-btn--ghost">Dashboard</a>
+                        <a href="{{ route('customer.manajemen') }}" class="lp-btn lp-btn--join">Join Now</a>
+                    @endif
                 @else
-                    <a href="{{ route('customer.dashboard') }}" class="button-outline-on-dark">
-                        Masuk Dashboard Saya →
-                    </a>
-                @endif
-            @else
-                <a href="{{ route('login') }}" class="button-outline-on-dark">
-                    Masuk Dashboard →
-                </a>
-            @endauth
+                    <a href="{{ route('login') }}" class="lp-btn lp-btn--ghost">Log In</a>
+                    <a href="{{ route('register') }}" class="lp-btn lp-btn--join">Join Now</a>
+                @endauth
+            </div>
         </nav>
 
         {{-- Hero Content --}}
-        <div style="max-width: 1400px; margin: 0 auto; padding: 128px 24px 64px;">
-            <div style="max-width: 800px; margin-bottom: var(--spacing-huge);">
+        <div class="lp-hero" style="max-width: 1400px; margin: 0 auto; padding: 128px 24px 64px;">
+            <div class="lp-hero__copy" style="max-width: 800px;">
                 <div class="pill-tag-mint" style="margin-bottom: var(--spacing-xxl);">
                     Teknologi Akuakultur Berkelanjutan
                 </div>
@@ -69,21 +76,33 @@
                 </div>
             </div>
 
-            {{-- Full Bleed Photography Element --}}
-            <div class="card-photo-frame animate-slide-up stagger-2" style="position: relative; width: 100%; height: 500px;">
-                <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2574&auto=format&fit=crop" alt="Budidaya Wolffia" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6; mix-blend-mode: luminosity;">
-                <div style="position: absolute; inset: 0; background: linear-gradient(to top, var(--canvas-night), transparent);"></div>
-                
-                <div style="position: absolute; bottom: var(--spacing-xxl); left: var(--spacing-xxl);">
-                    <p class="display-md" style="color: var(--on-primary);">42.5 kg</p>
-                    <p class="eyebrow-cap" style="color: var(--shade-40);">Total Biomassa Aktif</p>
+            <div class="lp-orbit" aria-hidden="true">
+                <div class="lp-orbit__ring lp-orbit__ring--1"></div>
+                <div class="lp-orbit__ring lp-orbit__ring--2"></div>
+                <div class="lp-orbit__ring lp-orbit__ring--3"></div>
+                <div class="lp-orbit__ring lp-orbit__ring--4"></div>
+
+                <div class="lp-orbit__center">
+                    <div class="lp-orbit__stat">20k+</div>
+                    <div class="lp-orbit__label">Mitra Pembudidaya</div>
+                </div>
+
+                <div class="lp-orbit__avatar lp-orbit__avatar--1">A</div>
+                <div class="lp-orbit__avatar lp-orbit__avatar--2">D</div>
+                <div class="lp-orbit__avatar lp-orbit__avatar--3">R</div>
+
+                <div class="lp-orbit__node lp-orbit__node--1">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6"/><path d="M12 16v6"/><path d="M4.93 4.93l4.24 4.24"/><path d="M14.83 14.83l4.24 4.24"/><path d="M2 12h6"/><path d="M16 12h6"/><path d="M4.93 19.07l4.24-4.24"/><path d="M14.83 9.17l4.24-4.24"/></svg>
+                </div>
+                <div class="lp-orbit__node lp-orbit__node--2">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21V7"/><path d="M12 21V3"/><path d="M4 21v-9"/></svg>
                 </div>
             </div>
         </div>
     </section>
 
     {{-- ── Features Section (Light/Transactional Track) ── --}}
-    <section class="canvas-cream" style="padding: 128px 0; border-top-left-radius: 40px; border-top-right-radius: 40px;">
+    <section id="kenapa" class="canvas-cream" style="padding: 128px 0; border-top-left-radius: 40px; border-top-right-radius: 40px;">
         <div style="max-width: 1400px; margin: 0 auto; padding: 0 24px;">
             <div style="text-align: center; margin-bottom: 80px; max-width: 640px; margin-left: auto; margin-right: auto;">
                 <h2 class="display-xl" style="color: var(--ink); margin-bottom: 24px;">Kenapa Wolfilium?</h2>
@@ -109,7 +128,7 @@
     </section>
 
     {{-- ── Edukasi Section (Light Track) ── --}}
-    <section class="canvas-cream" style="padding: 0 0 128px;">
+    <section id="panduan" class="canvas-cream" style="padding: 0 0 128px;">
         <div style="max-width: 1400px; margin: 0 auto; padding: 0 24px;">
             <div style="background: var(--pistachio-10); border-radius: var(--rounded-lg); padding: 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
                 <div class="animate-slide-up stagger-1">
@@ -143,7 +162,7 @@
     </section>
 
     {{-- ── Footer (Dark Track) ── --}}
-    <footer class="footer-dark">
+    <footer id="kontak" class="footer-dark">
         <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
             <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px;">
                 <div style="width: 32px; height: 32px; border-radius: var(--rounded-md); background: var(--primary); display: flex; align-items: center; justify-content: center;">
@@ -158,11 +177,260 @@
 </div>
 
 <style>
+.landing-aurora {
+    --bg-dark: #070510;
+    --text-primary: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.68);
+    --gradient-color-1: #87d99e;
+    --gradient-color-2: #43a28a;
+    --gradient-color-3: #053813;
+    --accent-glow: rgba(98, 241, 139, 0.4);
+    --btn-cta: #110E24;
+
+    color: var(--text-primary);
+    background-color: var(--bg-dark);
+    background-image:
+        radial-gradient(at 0% 20%, var(--gradient-color-2) 0px, transparent 40%),
+        radial-gradient(at 40% 30%, var(--gradient-color-1) 0px, transparent 60%),
+        radial-gradient(at 100% 100%, var(--gradient-color-3) 0px, transparent 70%);
+    background-attachment: fixed;
+}
+
+.landing-aurora__hero {
+    background: transparent;
+}
+
+.lp-nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 24px;
+}
+
+.lp-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.lp-brand__mark {
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 24px rgba(135, 217, 158, 0.22);
+}
+
+.lp-brand__mark svg { color: white; }
+
+.lp-brand__name {
+    font-family: var(--font-ui);
+    font-weight: 800;
+    letter-spacing: 0.2px;
+}
+
+.lp-nav__links {
+    display: flex;
+    justify-content: center;
+    gap: 26px;
+}
+
+.lp-nav__link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.lp-nav__link:hover { color: var(--text-primary); }
+
+.lp-nav__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    align-items: center;
+}
+
+.lp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: var(--rounded-pill);
+}
+
+.lp-btn--ghost {
+    color: var(--text-muted);
+}
+
+.lp-btn--ghost:hover { color: var(--text-primary); }
+
+.lp-btn--join {
+    color: var(--text-primary);
+    background: rgba(17, 14, 36, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 0 0 1px rgba(135, 217, 158, 0.12), 0 0 28px var(--accent-glow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.lp-btn--join:hover {
+    box-shadow: 0 0 0 1px rgba(135, 217, 158, 0.18), 0 0 42px var(--accent-glow);
+}
+
+.lp-hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+    align-items: start;
+}
+
+.lp-hero__copy { padding-right: 12px; }
+
+.lp-orbit {
+    position: relative;
+    width: min(520px, 100%);
+    height: min(520px, 72vw);
+    margin-left: auto;
+    margin-top: 12px;
+}
+
+.lp-orbit__ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.lp-orbit__ring--1 { inset: 0; opacity: 0.5; }
+.lp-orbit__ring--2 { inset: 44px; opacity: 0.35; }
+.lp-orbit__ring--3 { inset: 92px; opacity: 0.25; }
+.lp-orbit__ring--4 { inset: 140px; opacity: 0.18; }
+
+.lp-orbit__center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.lp-orbit__stat {
+    font-family: var(--font-ui);
+    font-weight: 800;
+    font-size: 64px;
+    letter-spacing: -0.02em;
+}
+
+.lp-orbit__label {
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.lp-orbit__avatar {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-ui);
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.lp-orbit__avatar--1 { top: 34px; left: 90px; }
+.lp-orbit__avatar--2 { top: 150px; right: 24px; }
+.lp-orbit__avatar--3 { bottom: 62px; left: 26px; }
+
+.lp-orbit__node {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.92);
+    background: rgba(17, 14, 36, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 0 32px var(--accent-glow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.lp-orbit__node--1 { top: 70px; right: 98px; }
+.lp-orbit__node--2 { bottom: 104px; right: 44px; }
+
+.footer-dark {
+    background: transparent;
+}
+
+.lp-client-logos {
+    margin: 0 auto 28px;
+    max-width: 980px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 28px;
+    justify-content: center;
+    opacity: 0.55;
+    font-family: var(--font-ui);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+@media (max-width: 900px) {
+    .lp-nav {
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "brand actions"
+            "links links";
+    }
+
+    .lp-brand { grid-area: brand; }
+    .lp-nav__actions { grid-area: actions; }
+    .lp-nav__links { grid-area: links; justify-content: flex-start; overflow-x: auto; padding-bottom: 6px; }
+
+    .lp-hero {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding-top: 20px;
+    }
+
+    .lp-orbit {
+        width: min(520px, 100%);
+        height: min(520px, 92vw);
+        margin: 0;
+    }
+}
+
 @media (max-width: 768px) {
     .display-xxl { font-size: 56px; line-height: 1.1; }
     .display-xl { font-size: 48px; }
     .display-md { font-size: 36px; }
-    .card-photo-frame { height: 300px !important; }
     section { padding: 64px 0 !important; }
 }
 </style>
