@@ -29,6 +29,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::get('/settings', [AdminDashboardController::class, 'settings'])->name('settings');
     Route::patch('/user/{user}/role', [AdminDashboardController::class, 'updateUserRole'])->name('user.role');
     Route::delete('/user/{user}', [AdminDashboardController::class, 'deleteUser'])->name('user.delete');
+    
+    // Katalog Ikan
+    Route::resource('catalog', \App\Http\Controllers\Admin\FishCatalogController::class);
 });
 
 // ── Customer Routes (role: customer) ──
