@@ -6,6 +6,7 @@ use App\Models\Farmer;
 use App\Models\SeedRequest;
 use App\Models\HarvestPrediction;
 use App\Models\HarvestLog;
+use App\Models\FishCatalog;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -54,7 +55,8 @@ class CustomerDashboardController extends Controller
      */
     public function katalog()
     {
-        return view('customer.katalog');
+        $fishes = FishCatalog::all();
+        return view('customer.katalog', compact('fishes'));
     }
 
     /**
