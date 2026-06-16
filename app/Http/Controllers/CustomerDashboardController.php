@@ -50,6 +50,14 @@ class CustomerDashboardController extends Controller
     }
 
     /**
+     * Katalog Ikan — Tampilkan katalog ikan peternakan
+     */
+    public function katalog()
+    {
+        return view('customer.katalog');
+    }
+
+    /**
      * Manajemen Panen — Kalkulator & Log Panen
      */
     public function manajemen(Request $request)
