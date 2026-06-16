@@ -35,6 +35,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
 Route::prefix('customer')->name('customer.')->middleware(['auth', 'role:customer'])->group(function () {
     Route::get('/', [CustomerDashboardController::class, 'index'])->name('dashboard');
     
+    // Katalog Ikan
+    Route::get('/katalog', [CustomerDashboardController::class, 'katalog'])->name('katalog');
+    
     // Manajemen Panen
     Route::get('/manajemen', [CustomerDashboardController::class, 'manajemen'])->name('manajemen');
     Route::post('/prediksi', [CustomerDashboardController::class, 'hitungPrediksi'])->name('prediksi');

@@ -9,8 +9,8 @@
     <div class="animate-bounce-in" style="width: 100%; max-width: 440px;">
         {{-- Logo --}}
         <div style="text-align: center; margin-bottom: 36px;">
-            <div style="width: 64px; height: 64px; border-radius: 20px; background: linear-gradient(135deg, #10b981, #047857); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; box-shadow: 0 8px 32px rgba(16,185,129,0.3);" class="animate-pulse-glow">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s.5 3.5-2 7c-1.5 2.1-3.5 3.5-5 4.5"/><path d="M11.7 10.4C12.6 7 16 5.2 17 3.5c1.3 2.5 2 5.8.5 9.5-1.5 3.5-4.5 5.5-7 6.5"/></svg>
+            <div style="width: 80px; height: 80px; border-radius: 20px; overflow: hidden; margin: 0 auto 16px; box-shadow: 0 8px 32px rgba(16,185,129,0.3);" class="animate-pulse-glow">
+                <img src="{{ asset('Wolfilium_Logo.png') }}" alt="Wolfilium Logo" style="width: 100%; height: 100%; object-fit: contain;">
             </div>
             <h1 style="font-size: 1.75rem; font-weight: 800; color: white; letter-spacing: -0.02em;">Buat Akun</h1>
             <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 4px;">Daftar sebagai customer untuk mulai menggunakan Wolfilium</p>

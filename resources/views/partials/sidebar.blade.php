@@ -7,8 +7,8 @@
     <div style="padding: 24px; border-bottom: 1px solid var(--hairline-dark);">
         <div style="display: flex; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 40px; height: 40px; border-radius: var(--rounded-lg); display: flex; align-items: center; justify-content: center; background: var(--primary);">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s.5 3.5-2 7c-1.5 2.1-3.5 3.5-5 4.5"/><path d="M11.7 10.4C12.6 7 16 5.2 17 3.5c1.3 2.5 2 5.8.5 9.5-1.5 3.5-4.5 5.5-7 6.5"/></svg>
+                <div style="width: 40px; height: 40px; border-radius: var(--rounded-lg); overflow: hidden; flex-shrink: 0;">
+                    <img src="{{ asset('Wolfilium_Logo.png') }}" alt="Wolfilium Logo" style="width: 100%; height: 100%; object-fit: contain;">
                 </div>
                 <div>
                     <h1 style="font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em;">Wolfilium</h1>
@@ -61,6 +61,10 @@
                         <a href="{{ route('customer.dashboard') }}" class="nav-link {{ request()->routeIs('customer.dashboard') ? 'active' : '' }}">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s.5 3.5-2 7c-1.5 2.1-3.5 3.5-5 4.5"/><path d="M11.7 10.4C12.6 7 16 5.2 17 3.5c1.3 2.5 2 5.8.5 9.5-1.5 3.5-4.5 5.5-7 6.5"/></svg>
                             Dashboard Saya
+                        </a>
+                        <a href="{{ route('customer.katalog') }}" class="nav-link {{ request()->routeIs('customer.katalog') ? 'active' : '' }}">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M2 12C2 6.5 6.5 2 12 2a10 10 0 0 1 8 4"/><path d="M22 12c0 5.5-4.5 10-10 10a10 10 0 0 1-8-4"/></svg>
+                            Katalog Ikan
                         </a>
                         <a href="{{ route('customer.manajemen') }}" class="nav-link {{ request()->routeIs('customer.manajemen') ? 'active' : '' }}">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
@@ -139,8 +143,8 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
     <div style="display: flex; align-items: center; gap: 8px;">
-        <div style="width: 32px; height: 32px; border-radius: var(--rounded-md); display: flex; align-items: center; justify-content: center; background: var(--primary);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s.5 3.5-2 7c-1.5 2.1-3.5 3.5-5 4.5"/></svg>
+        <div style="width: 32px; height: 32px; border-radius: var(--rounded-md); overflow: hidden; flex-shrink: 0;">
+            <img src="{{ asset('Wolfilium_Logo.png') }}" alt="Wolfilium Logo" style="width: 100%; height: 100%; object-fit: contain;">
         </div>
         <span class="heading-sm" style="color: var(--ink);">Wolfilium</span>
     </div>
