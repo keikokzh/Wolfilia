@@ -16,11 +16,7 @@
                 <span class="lp-brand__name">Wolfilium</span>
             </a>
 
-            <div class="lp-nav__links">
-                <a class="lp-nav__link" href="#kenapa">Your Team</a>
-                <a class="lp-nav__link" href="#kenapa">Solutions</a>
-                <a class="lp-nav__link" href="#panduan">Blog</a>
-                <a class="lp-nav__link" href="#kontak">Pricing</a>
+            <div class="lp-nav__links" aria-hidden="true" style="display: none;">
             </div>
 
             <div class="lp-nav__actions">
@@ -220,8 +216,8 @@
     max-width: 1400px;
     margin: 0 auto;
     padding: 18px 24px;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 24px;
 }
