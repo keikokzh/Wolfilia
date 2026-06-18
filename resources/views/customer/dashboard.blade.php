@@ -2,6 +2,18 @@
 @section('title', 'Dashboard Customer — Wolfilium')
 @section('content')
 <div style="padding: 24px; max-width: 1400px; margin: 0 auto;">
+@push('styles')
+<style>
+    @media (max-width: 768px) {
+        .cust-dash-wrap { padding: 16px !important; }
+        .cust-dash-wrap .stat-icon-box { width: 40px !important; height: 40px !important; border-radius: 10px !important; }
+        .cust-dash-wrap .stat-icon-box svg { width: 20px !important; height: 20px !important; }
+        .cust-dash-wrap .stat-number { font-size: 1.35rem !important; }
+        .cust-dash-wrap .stat-number span { font-size: 0.8rem !important; }
+        .cust-dash-wrap .stat-label-text { font-size: 0.65rem !important; }
+    }
+</style>
+@endpush
     <div class="page-header animate-slide-up">
         <h1 class="page-title">
             <div class="gradient-emerald icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s.5 3.5-2 7c-1.5 2.1-3.5 3.5-5 4.5"/><path d="M11.7 10.4C12.6 7 16 5.2 17 3.5c1.3 2.5 2 5.8.5 9.5-1.5 3.5-4.5 5.5-7 6.5"/></svg></div>

@@ -2,6 +2,40 @@
 @section('title', 'Katalog Ikan — Wolfilium')
 @section('content')
 <div style="padding: 24px; max-width: 1400px; margin: 0 auto;">
+@push('styles')
+<style>
+    @media (max-width: 768px) {
+        .fish-card-header {
+            padding: 20px !important;
+        }
+        .fish-card-header .fish-header-flex {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 16px !important;
+        }
+        .fish-card-header .fish-icon {
+            width: 56px !important;
+            height: 56px !important;
+            border-radius: 14px !important;
+        }
+        .fish-card-header .fish-name {
+            font-size: 1.15rem !important;
+        }
+        .fish-card-header .fish-wa-btn {
+            width: 100% !important;
+            justify-content: center !important;
+        }
+        .fish-card-detail {
+            padding: 20px !important;
+        }
+        .fish-pricing-table th,
+        .fish-pricing-table td {
+            padding: 10px 12px !important;
+            font-size: 0.75rem !important;
+        }
+    }
+</style>
+@endpush
     <div class="page-header animate-slide-up">
         <h1 class="page-title">
             <div class="gradient-emerald icon-box">
@@ -54,10 +88,10 @@
     @foreach($fishes as $index => $fish)
     <div class="card animate-slide-up stagger-{{ ($index % 4) + 1 }}" style="margin-bottom: 32px; overflow: hidden;">
         {{-- Header --}}
-        <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 32px; position: relative; overflow: hidden;">
+        <div class="fish-card-header" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 32px; position: relative; overflow: hidden;">
             <div style="position: absolute; top: -30px; right: -30px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,0.15), transparent); pointer-events: none;"></div>
-            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
-                <div style="width: 72px; height: 72px; border-radius: 20px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid rgba(59,130,246,0.3); background: rgba(59,130,246,0.1);">
+            <div class="fish-header-flex" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                <div class="fish-icon" style="width: 72px; height: 72px; border-radius: 20px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid rgba(59,130,246,0.3); background: rgba(59,130,246,0.1);">
                     @if($fish->image)
                         <img src="{{ asset('storage/' . $fish->image) }}" alt="{{ $fish->name }}" style="width: 90%; height: 90%; object-fit: contain;">
                     @else
@@ -66,7 +100,7 @@
                 </div>
                 <div style="flex: 1;">
                     <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px;">
-                        <h2 style="font-size: 1.5rem; font-weight: 800; color: white; letter-spacing: -0.02em;">{{ $fish->name }}</h2>
+                        <h2 class="fish-name" style="font-size: 1.5rem; font-weight: 800; color: white; letter-spacing: -0.02em;">{{ $fish->name }}</h2>
                         @if($fish->status_badge)
                             <span class="badge badge-blue" style="font-size: 11px;">{{ $fish->status_badge }}</span>
                         @endif
@@ -79,7 +113,7 @@
                 @php
                     $waText = $fish->whatsapp_text ?: "Halo Wolfilium, saya tertarik untuk membeli ikan {$fish->name} dari peternakan Wolfilium. Bisa info ketersediaan, ukuran, dan harganya?";
                 @endphp
-                <a href="https://wa.me/6282218410603?text={{ urlencode($waText) }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 12px; background: #25D366; color: white; text-decoration: none; font-weight: 700; font-size: 0.85rem; font-family: inherit; transition: all 0.2s; flex-shrink: 0;" onmouseover="this.style.background='#128C7E'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#25D366'; this.style.transform='translateY(0)'">
+                <a href="https://wa.me/6282218410603?text={{ urlencode($waText) }}" target="_blank" rel="noopener" class="fish-wa-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 12px; background: #25D366; color: white; text-decoration: none; font-weight: 700; font-size: 0.85rem; font-family: inherit; transition: all 0.2s; flex-shrink: 0;" onmouseover="this.style.background='#128C7E'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#25D366'; this.style.transform='translateY(0)'">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     Beli {{ $fish->name }}
                 </a>
@@ -87,7 +121,7 @@
         </div>
 
         {{-- Detail Content --}}
-        <div style="padding: 32px;">
+        <div class="fish-card-detail" style="padding: 32px;">
             {{-- Deskripsi --}}
             @if($fish->description)
             <div style="margin-bottom: 32px;">
@@ -154,7 +188,7 @@
                     Ukuran Tersedia & Estimasi Harga
                 </h4>
                 <div style="overflow-x: auto;">
-                    <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                    <table class="fish-pricing-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
                         <thead>
                             <tr style="border-bottom: 2px solid var(--hairline-light);">
                                 <th style="text-align: left; padding: 12px 16px; font-weight: 700; color: var(--ink); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Kategori</th>

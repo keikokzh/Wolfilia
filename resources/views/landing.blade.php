@@ -140,7 +140,7 @@
     {{-- ── Edukasi Section (Light Track) ── --}}
     <section id="panduan" class="canvas-cream" style="padding: 0 0 128px;">
         <div style="max-width: 1400px; margin: 0 auto; padding: 0 24px;">
-            <div style="background: var(--pistachio-10); border-radius: var(--rounded-lg); padding: 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
+            <div class="lp-edukasi-grid" style="background: var(--pistachio-10); border-radius: var(--rounded-lg); padding: 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
                 <div class="animate-slide-up stagger-1">
                     <h2 class="display-md" style="color: var(--ink); margin-bottom: 24px;">Panduan Budidaya & SOP Lengkap</h2>
                     <p class="body-lg" style="color: var(--shade-60); margin-bottom: 32px;">
@@ -456,10 +456,121 @@
 }
 
 @media (max-width: 768px) {
-    .display-xxl { font-size: 56px; line-height: 1.1; }
-    .display-xl { font-size: 48px; }
-    .display-md { font-size: 36px; }
+    .display-xxl { font-size: 42px; line-height: 1.1; }
+    .display-xl { font-size: 36px; }
+    .display-md { font-size: 28px; }
     section { padding: 64px 0 !important; }
+
+    /* Fix edukasi grid */
+    .lp-edukasi-grid {
+        grid-template-columns: 1fr !important;
+        padding: 32px !important;
+        gap: 32px !important;
+    }
+
+    /* Fix hero padding */
+    .lp-hero {
+        padding-top: 80px !important;
+        padding-bottom: 40px !important;
+    }
+
+    .lp-hero__copy {
+        padding-right: 0 !important;
+    }
+
+    /* Fix orbit sizing */
+    .lp-orbit {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .lp-orbit__stat {
+        font-size: 44px;
+    }
+
+    .lp-orbit__label {
+        font-size: 12px;
+    }
+
+    /* Fix feature cards */
+    .body-lg { font-size: 15px; }
+    .heading-xl { font-size: 22px; }
+
+    /* Fix footer */
+    .footer-dark { padding: 40px 24px !important; }
+
+    /* Fix nav buttons */
+    .lp-nav__actions {
+        gap: 8px;
+    }
+    .lp-btn {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    /* Fix button group wrap */
+    .button-primary-pill,
+    .button-outline-on-dark {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .display-xxl { font-size: 32px; }
+    .display-xl { font-size: 28px; }
+    .display-md { font-size: 24px; }
+
+    .lp-nav {
+        padding: 12px 16px;
+    }
+
+    .lp-brand__name {
+        font-size: 14px;
+    }
+
+    .lp-hero {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .lp-orbit {
+        max-width: 260px;
+        height: min(260px, 72vw) !important;
+    }
+
+    .lp-orbit__stat {
+        font-size: 36px;
+    }
+
+    .lp-orbit__avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 12px;
+    }
+
+    .lp-orbit__node {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+    }
+
+    .lp-edukasi-grid {
+        padding: 20px !important;
+    }
+
+    .button-primary-pill,
+    .button-outline-on-dark {
+        width: 100%;
+        justify-content: center;
+        font-size: 13px;
+        padding: 10px 16px;
+    }
+
+    .pill-tag-mint {
+        font-size: 10px;
+        padding: 3px 10px;
+    }
 }
 </style>
 @endsection

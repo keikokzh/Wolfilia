@@ -491,11 +491,44 @@
         .video-embed iframe { width: 100%; height: 100%; border: none; }
 
         @media (max-width: 768px) {
-            .page-title { font-size: 1.35rem; }
+            .page-title { font-size: 1.15rem; gap: 8px; }
+            .page-subtitle { font-size: 0.85rem; }
             .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-            .card { padding: 20px; }
-            .table th, .table td { padding: 10px 12px; font-size: 0.8rem; }
+            .card { padding: 16px; border-radius: 10px; }
+            .table th, .table td { padding: 10px 12px; font-size: 0.75rem; }
             .actions { flex-wrap: wrap; }
+            .btn { padding: 10px 18px; font-size: 14px; }
+            .btn-sm { padding: 6px 12px; font-size: 12px; }
+            .icon-box { width: 40px; height: 40px; border-radius: 10px; }
+            .icon-box svg { width: 20px; height: 20px; }
+            .form-input { padding: 10px 14px; font-size: 14px; }
+            .form-label { font-size: 13px; }
+            .badge { font-size: 10px; padding: 3px 8px; }
+            .page-header { margin-bottom: 20px; }
+            .stat-box .stat-value { font-size: 1.35rem; }
+            .stat-box .stat-label { font-size: 0.65rem; }
+            .chart-container { height: 220px; }
+            .modal-content { padding: 24px; border-radius: 16px; }
+            .alert { padding: 12px 14px; font-size: 0.8rem; border-radius: 10px; }
+            .edu-card { padding: 20px; }
+            .edu-card h3 { font-size: 1rem; }
+            .sop-step { gap: 14px; padding: 16px 0; }
+            .step-number { width: 34px; height: 34px; font-size: 0.8rem; }
+            .farmer-card { padding: 16px; }
+            .prediction-card { padding: 16px; }
+            .table-container { margin: 0 -16px; border-radius: 0; }
+            .info-tip { padding: 10px 12px; font-size: 0.75rem; }
+            .empty-state { padding: 40px 16px; }
+            .empty-state svg { width: 48px; height: 48px; }
+        }
+
+        @media (max-width: 480px) {
+            .page-title { font-size: 1rem; flex-wrap: wrap; }
+            .card { padding: 14px; }
+            .btn { width: 100%; justify-content: center; }
+            .btn-sm { width: auto; }
+            .actions { flex-direction: column; }
+            .actions .btn { width: 100%; }
         }
     </style>
     @stack('styles')
