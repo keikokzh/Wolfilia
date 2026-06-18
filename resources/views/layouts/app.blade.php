@@ -204,23 +204,91 @@
         .sidebar {
             position: fixed; top: 0; left: 0; bottom: 0; width: 280px;
             background: var(--canvas-night); color: var(--on-primary); display: flex; flex-direction: column;
-            transform: translateX(-100%); transition: transform 0.3s ease;
-            z-index: 50;
+            transform: translateX(-100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 60;
             font-family: var(--font-ui);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
         .sidebar.open { transform: translateX(0); }
         .sidebar-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.5);
-            z-index: 40; display: none;
+            z-index: 55;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            pointer-events: none;
         }
-        .sidebar-overlay.show { display: block; }
+        .sidebar-overlay.show {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
         .main-content { flex: 1; min-height: 100vh; }
 
+        /* ── Mobile Header ── */
+        .mobile-header {
+            display: none; /* hidden by default, shown only on mobile via media query */
+        }
+
+        /* ── Mobile Hamburger Button ── */
+        .mobile-hamburger-btn {
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            padding: 0;
+            border-radius: var(--rounded-md);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--ink);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .mobile-hamburger-btn:active {
+            background: rgba(0,0,0,0.06);
+        }
+
+        /* ── Desktop (≥1024px) ── */
         @media (min-width: 1024px) {
             .sidebar { transform: translateX(0); }
             .main-content { margin-left: 280px; }
             .mobile-header { display: none !important; }
             .sidebar-overlay { display: none !important; }
+        }
+
+        /* ── Mobile (<1024px) ── */
+        @media (max-width: 1023px) {
+            html, body { overflow-x: hidden; }
+
+            .sidebar {
+                width: min(320px, 85vw);
+            }
+
+            .mobile-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 60px;
+                padding: 0 12px;
+                background: var(--canvas-light);
+                border-bottom: 1px solid var(--hairline-light);
+                z-index: 30;
+            }
+
+            .main-content {
+                padding-top: 60px;
+            }
+
+            body.sidebar-open {
+                overflow: hidden;
+            }
         }
 
         /* ── Sidebar Nav ── */
@@ -441,12 +509,6 @@
         }
         .prediction-card.ready-card {
             border-color: #34d399; background: linear-gradient(145deg, #ecfdf5, #d1fae5);
-        }
-
-        /* ── Responsive ── */
-        .mobile-header {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 16px; background: white; border-bottom: 1px solid #e2e8f0;
         }
 
         /* ── Tooltip ── */

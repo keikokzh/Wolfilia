@@ -1,5 +1,5 @@
 {{-- Sidebar Overlay (Mobile) --}}
-<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
 
 {{-- Sidebar --}}
 <aside class="sidebar" id="sidebar">
@@ -21,14 +21,14 @@
                     </p>
                 </div>
             </div>
-            <button onclick="toggleSidebar()" style="display: none; padding: 6px; border-radius: 8px; background: none; border: none; color: white; cursor: pointer;" class="mobile-close-btn">
+            <button onclick="closeSidebar()" class="mobile-close-btn" aria-label="Tutup sidebar">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>
         </div>
     </div>
 
     {{-- Navigation --}}
-    <nav style="flex: 1; padding: 20px; overflow-y: auto;">
+    <nav id="sidebarNav" style="flex: 1; padding: 20px; overflow-y: auto;">
         <div style="margin-bottom: 28px;">
             <p class="nav-section-title">Menu Utama</p>
             <div style="display: flex; flex-direction: column; gap: 4px;">
@@ -142,28 +142,88 @@
 </aside>
 
 {{-- Mobile Header --}}
-<div class="mobile-header" style="background: var(--canvas-light); border-bottom: 1px solid var(--hairline-light);">
-    <button onclick="toggleSidebar()" style="padding: 8px; border-radius: var(--rounded-md); background: none; border: none; cursor: pointer; color: var(--ink);">
+<div class="mobile-header">
+    <button class="mobile-hamburger-btn" onclick="openSidebar()" aria-label="Buka menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
     <div style="display: flex; align-items: center; gap: 8px;">
         <div style="width: 32px; height: 32px; border-radius: var(--rounded-md); overflow: hidden; flex-shrink: 0;">
             <img src="{{ asset('Wolfilium_Logo.png') }}" alt="Wolfilium Logo" style="width: 100%; height: 100%; object-fit: contain;">
         </div>
-        <span class="heading-sm" style="color: var(--ink);">Wolfilium</span>
+        <span style="font-size: 16px; font-weight: 800; color: var(--ink);">Wolfilium</span>
     </div>
-    <div style="width: 40px;"></div>
+    <div style="width: 44px; flex-shrink: 0;"></div>
 </div>
 
 <script>
-function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('open');
-    document.getElementById('sidebarOverlay').classList.toggle('show');
-}
+(function() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    const body = document.body;
+
+    function openSidebar() {
+        sidebar.classList.add('open');
+        overlay.classList.add('show');
+        body.classList.add('sidebar-open');
+    }
+
+    function closeSidebar() {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('show');
+        body.classList.remove('sidebar-open');
+    }
+
+    // Expose globally
+    window.openSidebar = openSidebar;
+    window.closeSidebar = closeSidebar;
+
+    // Click overlay → close
+    overlay.addEventListener('click', closeSidebar);
+
+    // Escape key → close
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+            closeSidebar();
+        }
+    });
+
+    // Nav link click → close on mobile
+    const sidebarNav = document.getElementById('sidebarNav');
+    if (sidebarNav) {
+        sidebarNav.addEventListener('click', function(e) {
+            const link = e.target.closest('.nav-link');
+            if (link && window.innerWidth < 1024) {
+                closeSidebar();
+            }
+        });
+    }
+})();
 </script>
 
 <style>
 @media (max-width: 1023px) {
-    .mobile-close-btn { display: block !important; }
+    .mobile-close-btn {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.1);
+        border: none;
+        color: white;
+        cursor: pointer;
+        flex-shrink: 0;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .mobile-close-btn:active {
+        background: rgba(255,255,255,0.2);
+    }
+}
+@media (min-width: 1024px) {
+    .mobile-close-btn {
+        display: none !important;
+    }
 }
 </style>
